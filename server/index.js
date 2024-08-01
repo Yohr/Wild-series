@@ -1,6 +1,8 @@
 // Load environment variables from .env file
 require("dotenv").config();
 
+
+
 // Check database connection
 // Note: This is optional and can be removed if the database connection
 // is not required when starting the application
@@ -20,3 +22,7 @@ app
   .on("error", (err) => {
     console.error("Error:", err.message);
   });
+
+  app.get("/",(req,res) => {
+    res.status(200).send("Welcome to Wild series")
+  })
