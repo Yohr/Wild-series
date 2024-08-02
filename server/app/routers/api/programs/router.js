@@ -1,15 +1,17 @@
 const express = require("express");
 
-const routerPrograms = express.Router();
+const router = express.Router();
 
 
-const {browse} = require ("../../../controllers/programActions");
+const {browse, read} = require ("../../../controllers/programActions");
 
-routerPrograms.get("/", (req, res) => {
+router.get("/", (req, res) => {
     browse(req, res).catch(err => {
       console.error(err);
       res.status(500).send("Internal Server Error");
     });
   });
-  
-module.exports = routerPrograms;
+
+  router.get("/:id", read); // Complete path is: /api/programs/:id
+
+module.exports = router;
